@@ -1,4 +1,4 @@
-const SCRIPT_URL = 'YOUR_SCRIPT_WEB_APP_URL'; // Replace with your actual URL
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyb6cuzzmX1K6iRqJvHKw5WOYpPot1JYbAJgGBdPcSKhmCWIx8rz-xPH1czz8uLSf6x/exec'; // Replace with your actual URL
 
 function fetchHomework() {
   fetch(`${SCRIPT_URL}?action=getHomework`)
