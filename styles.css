@@ -1,0 +1,28 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+}
+
+#homework-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.sticky-note {
+    background-color: #ffeb3b;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    width: 150px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+}
