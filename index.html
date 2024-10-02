@@ -1,58 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Homework Display</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f0f0f0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      padding: 20px;
-    }
-    .sticky-note {
-      background-color: #fef68a;
-      width: 200px;
-      height: 200px;
-      margin: 10px;
-      padding: 15px;
-      box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
-      transform: rotate(-3deg);
-      position: relative;
-    }
-    .sticky-note h2 {
-      margin: 0;
-      font-size: 18px;
-      text-align: center;
-    }
-    .sticky-note p {
-      margin-top: 10px;
-      font-size: 14px;
-    }
-    .sticky-note::before {
-      content: '';
-      position: absolute;
-      width: 30px;
-      height: 30px;
-      background-color: red;
-      top: -10px;
-      right: 10px;
-      clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework Tracker</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div id="homework-container"></div>
-
-  <script src="scripts.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      fetchHomework();
-    });
-  </script>
+    <h1>Homework Tracker</h1>
+    <div id="homework-container"></div>
+    <script src="scripts.js"></script>
 </body>
 </html>
