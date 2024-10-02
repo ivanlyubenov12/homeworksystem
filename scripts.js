@@ -1,9 +1,13 @@
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyb6cuzzmX1K6iRqJvHKw5WOYpPot1JYbAJgGBdPcSKhmCWIx8rz-xPH1czz8uLSf6x/exec';
+const SCRIPT_URL = 'YOUR_SCRIPT_WEB_APP_URL'; // Replace with your actual URL
 
-// Fetch homework and display it in sticky notes
 function fetchHomework() {
   fetch(`${SCRIPT_URL}?action=getHomework`)
-    .then(response => response.json())
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok ' + response.statusText);
+      }
+      return response.json();
+    })
     .then(data => {
       const container = document.getElementById('homework-container');
       container.innerHTML = '';  // Clear the container
@@ -18,7 +22,8 @@ function fetchHomework() {
         stickyNote.innerHTML = `<h2>${day}</h2><p>${homework}</p>`;
         container.appendChild(stickyNote);
       });
-    });
+    })
+    .catch(error => console.error('There was a problem with the fetch operation:', error));
 }
 
 // Update homework for a specific day
@@ -37,5 +42,6 @@ function updateHomework(day, homework) {
     } else {
       alert('Failed to update homework.');
     }
-  });
+  })
+  .catch(error => console.error('There was a problem with the update operation:', error));
 }
