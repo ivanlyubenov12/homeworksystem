@@ -28,7 +28,5 @@ async function fetchHomework() {
     }
 }
 
-// Remove admin login function as it's now in login.js
-
 // Call the function to fetch homework when the page loads
 window.onload = fetchHomework;
