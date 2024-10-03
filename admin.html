@@ -38,31 +38,45 @@
             padding: 10px;
             margin: 5px 0;
         }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 <body>
     <header>Admin Panel</header>
+    
+    <!-- Admin login form -->
     <div class="container">
         <div class="input-group">
-            <label for="email">Email</label>
+            <label for="email">Admin Email</label>
             <input type="email" id="email" placeholder="Enter admin email">
         </div>
         <div class="input-group">
             <label for="password">Password</label>
-            <input type="password" id="password" placeholder="Enter admin password">
+            <input type="password" id="password" placeholder="Enter password">
         </div>
         <button id="loginBtn">Login</button>
 
-        <h3>Add New Homework</h3>
-        <div class="input-group">
-            <label for="subject">Subject</label>
-            <input type="text" id="subject" placeholder="Subject">
+        <!-- Homework addition form (only visible after login) -->
+        <div id="homeworkForm" style="display: none;">
+            <h3>Add New Homework</h3>
+            <div class="input-group">
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" placeholder="Subject">
+            </div>
+            <div class="input-group">
+                <label for="description">Description</label>
+                <input type="text" id="description" placeholder="Homework description">
+            </div>
+            <button id="addHomeworkBtn">Add Homework</button>
         </div>
-        <div class="input-group">
-            <label for="description">Description</label>
-            <input type="text" id="description" placeholder="Homework description">
-        </div>
-        <button id="addHomeworkBtn">Add Homework</button>
     </div>
 
     <script type="module">
@@ -72,7 +86,12 @@
         document.getElementById('loginBtn').addEventListener('click', () => {
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
-            loginAdmin(email, password);
+            loginAdmin(email, password).then(() => {
+                // Show homework form after successful login
+                document.getElementById('homeworkForm').style.display = 'block';
+            }).catch(error => {
+                console.error('Login failed:', error);
+            });
         });
 
         // Handle adding homework
