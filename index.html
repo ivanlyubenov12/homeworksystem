@@ -1,28 +1,23 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css"> <!-- Include your custom styles -->
     <title>Homework Tracker</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css"> <!-- Main styles -->
 </head>
-<body>
+<body class="bg-light">
 
-<div class="container mt-5">
-    <div class="text-center mb-4">
-        <h1 class="display-4">Homework Tracker</h1>
+    <div class="container">
+        <h1 class="text-center mt-5">Homework Tracker</h1>
+        <a href="admin.html" class="btn btn-secondary mb-3">Admin Login</a>
+        
+        <div id="homework-list" class="mt-4"></div> <!-- Homework list will be displayed here -->
     </div>
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Today's Homework</h5>
-            <div id="homework-list" class="mb-3"></div>
-            <a href="login.html" class="btn btn-primary">Login as Admin</a>
-        </div>
-    </div>
-</div>
 
-<script type="module" src="firebase.js"></script>
-<script type="module" src="script.js"></script>
+    <script src="firebase.js"></script> <!-- Your Firebase configuration -->
+    <script src="script.js"></script> <!-- Your main script to fetch homework -->
 </body>
 </html>
