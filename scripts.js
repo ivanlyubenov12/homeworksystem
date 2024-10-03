@@ -1,7 +1,6 @@
 // scripts.js
-import { db, auth } from './firebase.js'; // Import db and auth from firebase.js
+import { db } from './firebase.js'; // Import db from firebase.js
 import { collection, getDocs } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
-import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
 
 // Fetch and display homework for non-admins
 async function fetchHomework() {
@@ -29,17 +28,7 @@ async function fetchHomework() {
     }
 }
 
-// Admin login
-export async function loginAdmin(email, password) {
-    try {
-        const userCredential = await signInWithEmailAndPassword(auth, email, password);
-        alert('Admin logged in successfully!');
-        // Redirect to admin.html after login
-        window.location.href = "admin.html";
-    } catch (error) {
-        alert("Error logging in: " + error.message);
-    }
-}
+// Remove admin login function as it's now in login.js
 
 // Call the function to fetch homework when the page loads
 window.onload = fetchHomework;
