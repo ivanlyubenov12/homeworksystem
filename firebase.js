@@ -1,7 +1,9 @@
 // firebase.js
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
 import { getFirestore } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+import { getAuth } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
 
+// Your web app's Firebase configuration
 const firebaseConfig = {
     apiKey: "AIzaSyCVdTKkjPYyzsShf2wJO9YDldWt8UzY7iA",
     authDomain: "homework-f74b1.firebaseapp.com",
@@ -14,6 +16,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const auth = getAuth(app);
 
-// Export db for use in other files
-export { db }; 
+// Export db and auth for use in other files
+export { db, auth };
