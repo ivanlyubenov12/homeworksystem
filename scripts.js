@@ -1,5 +1,5 @@
-// script.js
-import { db } from './firebase.js'; // Ensure this path is correct
+// scripts.js
+import { db } from './firebase.js'; // Correctly import db
 import { collection, getDocs } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
 
 async function fetchHomework() {
