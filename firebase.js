@@ -23,14 +23,21 @@ export async function fetchHomework() {
   const homeworkSnapshot = await getDocs(homeworkCollection);
   const homeworkList = document.getElementById('homework-list');
   homeworkList.innerHTML = ""; // Clear the list before appending new items
+
   homeworkSnapshot.forEach((doc) => {
     const homeworkData = doc.data();
+
+    // Check if homeworkData has subject and description
+    const subject = homeworkData.subject || "No Subject";
+    const description = homeworkData.description || "No Description";
+
     const homeworkItem = document.createElement('div');
     homeworkItem.className = 'homework-item';
-    homeworkItem.innerText = `${homeworkData.subject}: ${homeworkData.description}`;
+    homeworkItem.innerText = `${subject}: ${description}`;
     homeworkList.appendChild(homeworkItem);
   });
 }
+
 
 // Admin login
 export async function loginAdmin(email, password) {
