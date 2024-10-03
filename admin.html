@@ -1,24 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin - Add Homework</title>
-  <link rel="stylesheet" href="styles.css">
-  <script type="module">
-    import { addHomework } from './firebase.js';
-
-    function handleAddHomework() {
-      const subject = document.getElementById('subject').value;
-      const description = document.getElementById('description').value;
-      addHomework(subject, description);
-    }
-  </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+        }
+        .container {
+            width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+        }
+    </style>
 </head>
 <body>
-  <h1>Add Homework</h1>
-  <input type="text" id="subject" placeholder="Subject" required>
-  <input type="text" id="description" placeholder="Description" required>
-  <button onclick="handleAddHomework()">Add Homework</button>
+    <header>Admin Panel</header>
+    <div class="container">
+        <div class="input-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Enter admin email">
+        </div>
+        <div class="input-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Enter admin password">
+        </div>
+        <button id="loginBtn">Login</button>
+
+        <h3>Add New Homework</h3>
+        <div class="input-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" placeholder="Subject">
+        </div>
+        <div class="input-group">
+            <label for="description">Description</label>
+            <input type="text" id="description" placeholder="Homework description">
+        </div>
+        <button id="addHomeworkBtn">Add Homework</button>
+    </div>
+
+    <script type="module">
+        import { loginAdmin, addHomework } from './firebase.js';
+
+        // Handle admin login
+        document.getElementById('loginBtn').addEventListener('click', () => {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            loginAdmin(email, password);
+        });
+
+        // Handle adding homework
+        document.getElementById('addHomeworkBtn').addEventListener('click', () => {
+            const subject = document.getElementById('subject').value;
+            const description = document.getElementById('description').value;
+            addHomework(subject, description);
+        });
+    </script>
 </body>
 </html>
