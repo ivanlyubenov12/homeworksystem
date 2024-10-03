@@ -1,20 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Homework Tracker</title>
-  <link rel="stylesheet" href="styles.css">
-  <script type="module">
-    import { fetchHomework } from './firebase.js';
-
-    document.addEventListener('DOMContentLoaded', () => {
-      fetchHomework();
-    });
-  </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+        }
+        #stickyNotes {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+        .note {
+            background-color: #f1c40f;
+            width: 200px;
+            height: 200px;
+            margin: 10px;
+            padding: 10px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
-  <h1>Homework Tracker</h1>
-  <div id="homework-list"></div>
+
+<header>
+    <h1>Homework Tracker</h1>
+</header>
+
+<div id="stickyNotes"></div>
+
+<script type="module" src="scripts.js"></script>
+
 </body>
 </html>
