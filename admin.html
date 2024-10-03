@@ -1,105 +1,31 @@
+<!-- admin.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            text-align: center;
-            padding: 20px;
-            background-color: #333;
-            color: white;
-        }
-        .container {
-            width: 400px;
-            margin: 50px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .input-group {
-            margin-bottom: 15px;
-        }
-        label {
-            display: block;
-            font-size: 14px;
-            margin-bottom: 5px;
-        }
-        input, button {
-            width: 100%;
-            padding: 10px;
-            margin: 5px 0;
-        }
-        button {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
-    </style>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-    <header>Admin Panel</header>
-    
-    <!-- Admin login form -->
-    <div class="container">
-        <div class="input-group">
-            <label for="email">Admin Email</label>
-            <input type="email" id="email" placeholder="Enter admin email">
-        </div>
-        <div class="input-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" placeholder="Enter password">
-        </div>
-        <button id="loginBtn">Login</button>
+<body class="bg-light">
 
-        <!-- Homework addition form (only visible after login) -->
-        <div id="homeworkForm" style="display: none;">
-            <h3>Add New Homework</h3>
-            <div class="input-group">
+    <div class="container">
+        <h1 class="text-center mt-5">Admin Panel</h1>
+        <form id="add-homework-form" class="mt-4">
+            <div class="form-group">
                 <label for="subject">Subject</label>
-                <input type="text" id="subject" placeholder="Subject">
+                <input type="text" class="form-control" id="subject" required>
             </div>
-            <div class="input-group">
+            <div class="form-group">
                 <label for="description">Description</label>
-                <input type="text" id="description" placeholder="Homework description">
+                <textarea class="form-control" id="description" rows="3" required></textarea>
             </div>
-            <button id="addHomeworkBtn">Add Homework</button>
-        </div>
+            <button type="submit" class="btn btn-primary">Add Homework</button>
+        </form>
+        <div id="message" class="mt-3"></div>
     </div>
 
-    <script type="module">
-        import { loginAdmin, addHomework } from './firebase.js';
-
-        // Handle admin login
-        document.getElementById('loginBtn').addEventListener('click', () => {
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            loginAdmin(email, password).then(() => {
-                // Show homework form after successful login
-                document.getElementById('homeworkForm').style.display = 'block';
-            }).catch(error => {
-                console.error('Login failed:', error);
-            });
-        });
-
-        // Handle adding homework
-        document.getElementById('addHomeworkBtn').addEventListener('click', () => {
-            const subject = document.getElementById('subject').value;
-            const description = document.getElementById('description').value;
-            addHomework(subject, description);
-        });
-    </script>
+    <script type="module" src="firebase.js"></script>
+    <script type="module" src="admin.js"></script> <!-- New script for admin actions -->
 </body>
 </html>
