@@ -8,9 +8,9 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="bg-light">
-
     <div class="container">
         <h1 class="text-center mt-5">Admin Panel</h1>
+        <!-- Form to add new homework -->
         <form id="add-homework-form" class="mt-4">
             <div class="form-group">
                 <label for="subject">Subject</label>
@@ -18,14 +18,20 @@
             </div>
             <div class="form-group">
                 <label for="description">Description</label>
-                <textarea class="form-control" id="description" rows="3" required></textarea>
+                <textarea class="form-control" id="description" required></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Add Homework</button>
         </form>
-        <div id="message" class="mt-3"></div>
+
+        <!-- Dropdown for deleting homework -->
+        <div class="mt-5">
+            <h4>Delete Homework</h4>
+            <select id="homework-dropdown" class="form-control"></select>
+            <button id="delete-button" class="btn btn-danger mt-2">Delete Selected Homework</button>
+        </div>
     </div>
 
     <script type="module" src="firebase.js"></script>
-    <script type="module" src="admin.js"></script> <!-- New script for admin actions -->
+    <script type="module" src="admin.js"></script>
 </body>
 </html>
