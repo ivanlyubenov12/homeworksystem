@@ -18,8 +18,11 @@ h1 {
   padding: 10px;
   margin: 10px;
   border-radius: 8px;
+  transition: transform 0.3s ease-in-out;
 }
-
+.homework-item {
+  transform: scale(1.1);
+}
 input, button {
   display: block;
   margin: 10px auto;
