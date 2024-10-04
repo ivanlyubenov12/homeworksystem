@@ -6,61 +6,86 @@ const addHomeworkForm = document.getElementById('add-homework-form');
 const homeworkDropdown = document.getElementById('homework-dropdown');
 const deleteButton = document.getElementById('delete-button');
 
-// Fetch all homework and populate the dropdown
+// Fetch and populate homework dropdown
 async function loadHomeworkDropdown() {
-    const homeworkCollection = collection(db, "homework");
-    const homeworkSnapshot = await getDocs(homeworkCollection);
+    try {
+        const homeworkCollection = collection(db, "homework");
+        const homeworkSnapshot = await getDocs(homeworkCollection);
 
-    homeworkDropdown.innerHTML = ""; // Clear existing options
+        homeworkDropdown.innerHTML = ""; // Clear the dropdown before repopulating
 
-    homeworkSnapshot.forEach((doc) => {
-        const option = document.createElement('option');
-        option.value = doc.id;
-        option.textContent = `${doc.data().subject}: ${doc.data().description}`;
-        homeworkDropdown.appendChild(option);
-    });
+        if (homeworkSnapshot.empty) {
+            // If there are no homework items, display a default option
+            const option = document.createElement('option');
+            option.textContent = "No homework available";
+            option.disabled = true;
+            option.selected = true;
+            homeworkDropdown.appendChild(option);
+            return;
+        }
+
+        // Populate dropdown with homework items
+        homeworkSnapshot.forEach((doc) => {
+            const option = document.createElement('option');
+            option.value = doc.id; // Store the document ID as the value
+            option.textContent = `${doc.data().subject}: ${doc.data().description}`;
+            homeworkDropdown.appendChild(option);
+        });
+    } catch (error) {
+        console.error("Error loading homework dropdown:", error);
+    }
 }
 
-// Add new homework (replacing old homework with the same subject)
+// Add new homework, deleting old homework if it has the same subject
 async function addHomework(subject, description) {
-    const homeworkCollection = collection(db, "homework");
+    try {
+        const homeworkCollection = collection(db, "homework");
 
-    // Delete any existing homework with the same subject
-    const existingHomeworkQuery = query(homeworkCollection, where("subject", "==", subject));
-    const existingHomeworkSnapshot = await getDocs(existingHomeworkQuery);
-    existingHomeworkSnapshot.forEach(async (doc) => {
-        await deleteDoc(doc.ref);
-    });
+        // Query to check if homework with the same subject already exists
+        const existingHomeworkQuery = query(homeworkCollection, where("subject", "==", subject));
+        const existingHomeworkSnapshot = await getDocs(existingHomeworkQuery);
 
-    // Add the new homework
-    await addDoc(homeworkCollection, { subject, description });
+        // Delete existing homework with the same subject, if any
+        for (const doc of existingHomeworkSnapshot.docs) {
+            await deleteDoc(doc.ref);
+        }
+
+        // Add new homework
+        await addDoc(homeworkCollection, { subject, description });
+        alert('Homework added or updated successfully!');
+    } catch (error) {
+        console.error("Error adding homework:", error);
+    }
 }
 
 // Delete selected homework
 async function deleteHomework(id) {
-    if (!id) return;
-    await deleteDoc(doc(db, "homework", id));
+    try {
+        if (!id) return; // Skip if no homework is selected
+        await deleteDoc(doc(db, "homework", id));
+        alert('Homework deleted successfully!');
+    } catch (error) {
+        console.error("Error deleting homework:", error);
+    }
 }
 
 // Event listener for adding homework
 addHomeworkForm.addEventListener('submit', async (event) => {
-    event.preventDefault();
+    event.preventDefault(); // Prevent the form from reloading the page
     const subject = document.getElementById('subject').value;
     const description = document.getElementById('description').value;
 
     await addHomework(subject, description);
-    alert('Homework added/updated successfully!');
-    addHomeworkForm.reset();
-    loadHomeworkDropdown(); // Reload dropdown after adding homework
+    addHomeworkForm.reset(); // Reset the form fields
+    loadHomeworkDropdown(); // Refresh the dropdown list
 });
 
 // Event listener for deleting homework
 deleteButton.addEventListener('click', async () => {
     const selectedId = homeworkDropdown.value;
     await deleteHomework(selectedId);
-    alert('Homework deleted successfully!');
-    loadHomeworkDropdown(); // Reload dropdown after deletion
+    loadHomeworkDropdown(); // Refresh the dropdown list after deletion
 });
 
-// Load dropdown on page load
+// Load the dropdown when the page loads
 window.onload = loadHomeworkDropdown;
