@@ -1,5 +1,8 @@
 body {
   font-family: Arial, sans-serif;
+  background-image: src('5058200_2650183.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 h1 {
