@@ -3,6 +3,7 @@ body {
   background-image: url("bg.jpg");
   background-size: cover;
   background-repeat: no-repeat;
+  color: white;
 }
 
 h1 {
