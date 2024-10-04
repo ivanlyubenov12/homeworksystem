@@ -13,11 +13,11 @@ loginForm.addEventListener('submit', async (event) => {
 
     try {
         await signInWithEmailAndPassword(auth, email, password);
-        loginMessageDiv.innerHTML = '<div class="alert alert-success">Login successful!</div>';
+        loginMessageDiv.innerHTML = '<div class="alert alert-success">Успешно влизане!</div>';
         // Redirect to admin.html after login
         window.location.href = "admin.html";
     } catch (error) {
-        loginMessageDiv.innerHTML = `<div class="alert alert-danger">Error logging in: ${error.message}</div>`;
+        loginMessageDiv.innerHTML = `<div class="alert alert-danger">Грешка! ${error.message}</div>`;
         console.error("Error logging in:", error);
     }
 });
