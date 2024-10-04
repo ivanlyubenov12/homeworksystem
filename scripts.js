@@ -12,7 +12,7 @@ async function fetchHomework() {
         homeworkList.innerHTML = ""; // Clear the list before appending new items
 
         if (homeworkSnapshot.empty) {
-            homeworkList.innerHTML = "<p>Супер! Нямаме домашни!</p>"; // Informative message if empty
+            homeworkList.innerHTML = "<h3>Супер! Нямаме домашни!</h3>"; // Informative message if empty
             return;
         }
 
