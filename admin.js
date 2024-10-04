@@ -17,7 +17,7 @@ async function loadHomeworkDropdown() {
         if (homeworkSnapshot.empty) {
             // If there are no homework items, display a default option
             const option = document.createElement('option');
-            option.textContent = "No homework available";
+            option.textContent = "Няма зададени домашни";
             option.disabled = true;
             option.selected = true;
             homeworkDropdown.appendChild(option);
@@ -52,9 +52,9 @@ async function addHomework(subject, description) {
 
         // Add new homework
         await addDoc(homeworkCollection, { subject, description });
-        alert('Homework added or updated successfully!');
+        alert('Домашно добавено/редактирано успешно!');
     } catch (error) {
-        console.error("Error adding homework:", error);
+        console.error("Грешка!", error);
     }
 }
 
@@ -63,9 +63,9 @@ async function deleteHomework(id) {
     try {
         if (!id) return; // Skip if no homework is selected
         await deleteDoc(doc(db, "homework", id));
-        alert('Homework deleted successfully!');
+        alert('Успешно изтрихте домашно!');
     } catch (error) {
-        console.error("Error deleting homework:", error);
+        console.error("Грешка!", error);
     }
 }
 
