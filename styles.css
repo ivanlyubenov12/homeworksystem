@@ -1,10 +1,11 @@
 body {
   font-family: Arial, sans-serif;
-  background-image: url("bg.jpg");
+  background-image: url(low-poly-grid.svg);
   background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
   background-repeat: no-repeat;
   color: white;
-  background: rgba(0,0,0,0.6);
 }
 
 h1 {
