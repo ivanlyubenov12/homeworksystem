@@ -12,7 +12,8 @@ h1 {
 }
 
 .homework-item {
-  background: #ffeb3b;
+  background: rgb(112,24,243);
+  background: linear-gradient(90deg, rgba(112,24,243,1) 0%, rgba(175,17,180,1) 100%);
   padding: 10px;
   margin: 10px;
   border-radius: 8px;
