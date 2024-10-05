@@ -10,7 +10,7 @@ body {
   font-weight: 500;
 }
 
-h1 {
+h1, h3 {
   text-align: center;
 }
 
@@ -55,4 +55,5 @@ a:hover{
 }
 #login-btn {
   text-align: center;
+  width: 80%;
 }
