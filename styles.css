@@ -23,18 +23,23 @@ h1 {
 .homework-item {
   transform: scale(1.1);
 }
-input, button {
+input {
   display: block;
   margin: 10px auto;
   padding: 10px;
   width: 80%;
 }
 
+
 button {
   background-color: #4CAF50;
   color: white;
   border: none;
   cursor: pointer;
+  display: block;
+  margin: 10px auto;
+  padding: 10px;
+  
 }
 
 button:hover {
