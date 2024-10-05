@@ -1,5 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Overpass:ital,wght@0,100..900;1,100..900&display=swap');
 body {
-  font-family: Arial, sans-serif;
+  font-family: "Exo 2", sans-serif;
   background-image: url(low-poly-grid.svg);
   background-size: cover;
   background-attachment: fixed;
