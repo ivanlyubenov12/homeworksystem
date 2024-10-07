@@ -28,10 +28,12 @@ async function fetchHomework() {
             const homeworkData = doc.data();
             switch (homeworkData.subject) {
                 case "Математика":
+                    sortedHomework["Математика"].unshift(homeworkData); // Keep "Математика" at the top
+                    break;
                 case "ФЧ 1":
                 case "ФЧ 2":
                 case "ФЧ 3":
-                    sortedHomework["Математика"].push(homeworkData);
+                    sortedHomework["Математика"].push(homeworkData); // Push to the end of "Математика"
                     break;
                 case "История":
                 case "География":
@@ -39,8 +41,10 @@ async function fetchHomework() {
                     sortedHomework["Разказвателни"].push(homeworkData);
                     break;
                 case "КМИТ 1":
+                    sortedHomework["КМИТ"].unshift(homeworkData); // Keep "КМИТ 1" at the top
+                    break;
                 case "КМИТ 2":
-                    sortedHomework["КМИТ"].push(homeworkData);
+                    sortedHomework["КМИТ"].push(homeworkData); // Push "КМИТ 2" to the end
                     break;
                 case "Български":
                 case "Литература":
