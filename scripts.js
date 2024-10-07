@@ -44,6 +44,14 @@ async function fetchHomework() {
             }
         });
 
+        // Function to sort "Математика" items with Математика first, followed by ФЧ 1, ФЧ 2, ФЧ 3
+        function sortMathHomework(homeworkItems) {
+            return homeworkItems.sort((a, b) => {
+                const order = ["Математика", "ФЧ 1", "ФЧ 2", "ФЧ 3"];
+                return order.indexOf(a.subject) - order.indexOf(b.subject);
+            });
+        }
+
         // Function to create and display a category section
         function displayCategory(categoryName, homeworkItems) {
             if (homeworkItems.length > 0) {
@@ -60,8 +68,11 @@ async function fetchHomework() {
             }
         }
 
+        // Sort "Математика" homework as requested
+        const sortedMathHomework = sortMathHomework(categorizedHomework["Математика"]);
+
         // Display homework for each category
-        displayCategory("Математика", categorizedHomework["Математика"]);
+        displayCategory("Математика", sortedMathHomework);
         displayCategory("Разказвателни", categorizedHomework["Разказвателни"]);
         displayCategory("Други", categorizedHomework["Други"]);
 
