@@ -15,7 +15,7 @@ async function fetchHomework() {
             return;
         }
 
-        // Define the sorted subjects structure
+        // Define the sorted structure for homework
         const sortedHomework = {
             "Математика": [],
             "Разказвателни": [],
@@ -28,30 +28,30 @@ async function fetchHomework() {
             const homeworkData = doc.data();
             switch (homeworkData.subject) {
                 case "Математика":
-                    sortedHomework["Математика"].unshift(homeworkData); // Keep "Математика" at the top
+                    sortedHomework["Математика"].push(homeworkData); // Add to Math
                     break;
                 case "ФЧ 1":
                 case "ФЧ 2":
                 case "ФЧ 3":
-                    sortedHomework["Математика"].push(homeworkData); // Push to the end of "Математика"
+                    sortedHomework["Математика"].push(homeworkData); // Add to Math
                     break;
                 case "История":
                 case "География":
                 case "ЧП":
-                    sortedHomework["Разказвателни"].push(homeworkData);
+                    sortedHomework["Разказвателни"].push(homeworkData); // Add to Narrative
                     break;
                 case "КМИТ 1":
-                    sortedHomework["КМИТ"].unshift(homeworkData); // Keep "КМИТ 1" at the top
+                    sortedHomework["КМИТ"].unshift(homeworkData); // Add KMIT 1 on top
                     break;
                 case "КМИТ 2":
-                    sortedHomework["КМИТ"].push(homeworkData); // Push "КМИТ 2" to the end
+                    sortedHomework["КМИТ"].push(homeworkData); // Add KMIT 2 below KMIT 1
                     break;
                 case "Български":
                 case "Литература":
-                    sortedHomework["БЕЛ"].push(homeworkData);
+                    sortedHomework["БЕЛ"].push(homeworkData); // Add to Bulgarian and Literature
                     break;
                 default:
-                    sortedHomework["Други"].push(homeworkData);
+                    sortedHomework["Други"].push(homeworkData); // Add to Others
             }
         });
 
