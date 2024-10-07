@@ -1,3 +1,7 @@
+import { db } from './firebase.js'; // Import db from firebase.js
+import { collection, getDocs } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+
+// Fetch and display homework for non-admins
 async function fetchHomework() {
     try {
         const homeworkCollection = collection(db, "homework");
@@ -16,6 +20,7 @@ async function fetchHomework() {
             "Математика": [],
             "Разказвателни": [],
             "КМИТ": [],
+            "БЕЛ": [],
             "Други": []
         };
 
@@ -36,6 +41,10 @@ async function fetchHomework() {
                 case "КМИТ 1":
                 case "КМИТ 2":
                     sortedHomework["КМИТ"].push(homeworkData);
+                    break;
+                case "Български":
+                case "Литература":
+                    sortedHomework["БЕЛ"].push(homeworkData);
                     break;
                 default:
                     sortedHomework["Други"].push(homeworkData);
@@ -62,9 +71,13 @@ async function fetchHomework() {
         displayHomework("Математика", sortedHomework["Математика"]);
         displayHomework("Разказвателни", sortedHomework["Разказвателни"]);
         displayHomework("КМИТ", sortedHomework["КМИТ"]);
+        displayHomework("БЕЛ", sortedHomework["БЕЛ"]);
         displayHomework("Други", sortedHomework["Други"]);
 
     } catch (error) {
         console.error('Error fetching homework:', error);
     }
 }
+
+// Call the function to fetch homework when the page loads
+window.onload = fetchHomework;
