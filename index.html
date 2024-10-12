@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,20 +8,148 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="styles.css"> <!-- Optional: Your custom styles -->
+    <style>
+        /* Styling the table for rounded borders */
+        table {
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* Bold weekdays and class periods */
+        th, td:first-child {
+            font-weight: bold;
+        }
+
+        /* Custom styles for a clean layout */
+        .container {
+            margin-top: 20px;
+        }
+
+        .homework-section, .schedule-section {
+            margin-bottom: 30px;
+        }
+
+        .schedule-section {
+            margin-top: 20px;
+        }
+
+        .schedule-section table {
+            border-radius: 10px;
+        }
+    </style>
 </head>
+
 <body class="bg-light">
 
     <div class="container">
-        <h1 class="text-center mt-5">Домашни на 6А</h1>
+        <div class="row">
+            <!-- Section 1: Homework -->
+            <div class="col-md-6 homework-section">
+                <h3>Домашни</h3>
+                <div id="homework-list" class="mt-4"></div> <!-- Homework list will be displayed here -->
+            </div>
+
+            <!-- Section 2: Schedule -->
+            <div class="col-md-6 schedule-section">
+                <h3>Програма</h3>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Понеделник</th>
+                            <th>Вторник</th>
+                            <th>Сряда</th>
+                            <th>Четвъртък</th>
+                            <th>Петък</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Schedule with example subjects -->
+                        <tr>
+                            <td>Час 1</td>
+                            <td>Математика</td>
+                            <td>Английски</td>
+                            <td>История</td>
+                            <td>Математика</td>
+                            <td>Час на класа</td>
+                        </tr>
+                        <tr>
+                            <td>Час 2</td>
+                            <td>ФЧ 1</td>
+                            <td>Математика</td>
+                            <td>Български</td>
+                            <td>ФЧ 2</td>
+                            <td>ФЧ 3</td>
+                        </tr>
+                        <tr>
+                            <td>Час 3</td>
+                            <td>География</td>
+                            <td>ЧП</td>
+                            <td>Литература</td>
+                            <td>Английски</td>
+                            <td>Рисуване</td>
+                        </tr>
+                        <tr>
+                            <td>Час 4</td>
+                            <td>ТиП</td>
+                            <td>История</td>
+                            <td>Музика</td>
+                            <td>КМИТ 1</td>
+                            <td>Математика</td>
+                        </tr>
+                        <tr>
+                            <td>Час 5</td>
+                            <td>Литература</td>
+                            <td>Музика</td>
+                            <td>ФЧ 1</td>
+                            <td>ФЧ 3</td>
+                            <td>География</td>
+                        </tr>
+                        <tr>
+                            <td>Час 6</td>
+                            <td>КМИТ 2</td>
+                            <td>Литература</td>
+                            <td>Математика</td>
+                            <td>ФЧ 2</td>
+                            <td>ЧП</td>
+                        </tr>
+                        <tr>
+                            <td>Час 7</td>
+                            <td>Английски</td>
+                            <td>КМИТ 1</td>
+                            <td>Час на класа</td>
+                            <td>История</td>
+                            <td>ТиП</td>
+                        </tr>
+                        <tr>
+                            <td>Час 8</td>
+                            <td>Математика</td>
+                            <td>Рисуване</td>
+                            <td>ФЧ 3</td>
+                            <td>География</td>
+                            <td>Български</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
         
-        
-        <div id="homework-list" class="mt-4"></div> <!-- Homework list will be displayed here -->
+        <!-- Login Button -->
         <div class="col-md-12 text-center">
             <a href="login.html" class="btn btn-primary mb-3" id="login-btn"><i class="bi bi-box-arrow-in-right"></i> Влез като админ</a>
         </div>
     </div>
 
-    <script type="module" src="firebase.js"></script> <!-- Your Firebase configuration -->
-    <script type="module" src="scripts.js"></script> <!-- Your main script to fetch homework -->
+    <script type="module" src="firebase.js"></script> <!-- Firebase configuration -->
+    <script type="module" src="scripts.js"></script> <!-- Main script to fetch homework -->
 </body>
+
 </html>
