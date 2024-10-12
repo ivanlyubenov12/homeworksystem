@@ -9,18 +9,44 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="styles.css"> <!-- Optional: Your custom styles -->
     <style>
-        /* Styling the table for rounded borders */
+        /* Container styling for layout */
+        .container {
+            margin-top: 20px;
+        }
+
+        .homework-section, .schedule-section {
+            margin-bottom: 30px;
+            height: 100%; /* Ensures both sections align vertically */
+        }
+
+        .homework-section {
+            padding-right: 20px;
+        }
+
+        .schedule-section {
+            margin-top: 20px;
+        }
+
+        /* Adding a border between sections */
+        .row {
+            border-left: 1px solid white;
+            padding-left: 20px;
+        }
+
+        /* Table styling for rounded borders and white text */
         table {
             border-collapse: separate;
             border-spacing: 0;
             border-radius: 10px;
             overflow: hidden;
+            background-color: #343a40;
         }
 
         th, td {
-            border: 1px solid #dee2e6;
+            border: 1px solid white;
             padding: 10px;
             text-align: center;
+            color: white; /* White text in the table */
         }
 
         /* Bold weekdays and class periods */
@@ -28,21 +54,20 @@
             font-weight: bold;
         }
 
-        /* Custom styles for a clean layout */
-        .container {
-            margin-top: 20px;
+        /* Horizontal scrolling on mobile for the table */
+        .table-responsive {
+            overflow-x: auto;
         }
 
+        /* Custom styles for better alignment */
+        .col-md-6 {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Schedule and Homework section adjustments */
         .homework-section, .schedule-section {
-            margin-bottom: 30px;
-        }
-
-        .schedule-section {
-            margin-top: 20px;
-        }
-
-        .schedule-section table {
-            border-radius: 10px;
+            min-height: 500px; /* Makes them vertically aligned */
         }
     </style>
 </head>
@@ -59,86 +84,88 @@
 
             <!-- Section 2: Schedule -->
             <div class="col-md-6 schedule-section">
-                <h3>Програма</h3>
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>Понеделник</th>
-                            <th>Вторник</th>
-                            <th>Сряда</th>
-                            <th>Четвъртък</th>
-                            <th>Петък</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Schedule with example subjects -->
-                        <tr>
-                            <td>Час 1</td>
-                            <td>Математика</td>
-                            <td>Английски</td>
-                            <td>История</td>
-                            <td>Математика</td>
-                            <td>Час на класа</td>
-                        </tr>
-                        <tr>
-                            <td>Час 2</td>
-                            <td>ФЧ 1</td>
-                            <td>Математика</td>
-                            <td>Български</td>
-                            <td>ФЧ 2</td>
-                            <td>ФЧ 3</td>
-                        </tr>
-                        <tr>
-                            <td>Час 3</td>
-                            <td>География</td>
-                            <td>ЧП</td>
-                            <td>Литература</td>
-                            <td>Английски</td>
-                            <td>Рисуване</td>
-                        </tr>
-                        <tr>
-                            <td>Час 4</td>
-                            <td>ТиП</td>
-                            <td>История</td>
-                            <td>Музика</td>
-                            <td>КМИТ 1</td>
-                            <td>Математика</td>
-                        </tr>
-                        <tr>
-                            <td>Час 5</td>
-                            <td>Литература</td>
-                            <td>Музика</td>
-                            <td>ФЧ 1</td>
-                            <td>ФЧ 3</td>
-                            <td>География</td>
-                        </tr>
-                        <tr>
-                            <td>Час 6</td>
-                            <td>КМИТ 2</td>
-                            <td>Литература</td>
-                            <td>Математика</td>
-                            <td>ФЧ 2</td>
-                            <td>ЧП</td>
-                        </tr>
-                        <tr>
-                            <td>Час 7</td>
-                            <td>Английски</td>
-                            <td>КМИТ 1</td>
-                            <td>Час на класа</td>
-                            <td>История</td>
-                            <td>ТиП</td>
-                        </tr>
-                        <tr>
-                            <td>Час 8</td>
-                            <td>Математика</td>
-                            <td>Рисуване</td>
-                            <td>ФЧ 3</td>
-                            <td>География</td>
-                            <td>Български</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <h3>Разписание</h3>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Понеделник</th>
+                                <th>Вторник</th>
+                                <th>Сряда</th>
+                                <th>Четвъртък</th>
+                                <th>Петък</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Schedule with example subjects -->
+                            <tr>
+                                <td>Час 1</td>
+                                <td>Математика</td>
+                                <td>Английски</td>
+                                <td>История</td>
+                                <td>Математика</td>
+                                <td>Час на класа</td>
+                            </tr>
+                            <tr>
+                                <td>Час 2</td>
+                                <td>ФЧ 1</td>
+                                <td>Математика</td>
+                                <td>Български</td>
+                                <td>ФЧ 2</td>
+                                <td>ФЧ 3</td>
+                            </tr>
+                            <tr>
+                                <td>Час 3</td>
+                                <td>География</td>
+                                <td>ЧП</td>
+                                <td>Литература</td>
+                                <td>Английски</td>
+                                <td>Рисуване</td>
+                            </tr>
+                            <tr>
+                                <td>Час 4</td>
+                                <td>ТиП</td>
+                                <td>История</td>
+                                <td>Музика</td>
+                                <td>КМИТ 1</td>
+                                <td>Математика</td>
+                            </tr>
+                            <tr>
+                                <td>Час 5</td>
+                                <td>Литература</td>
+                                <td>Музика</td>
+                                <td>ФЧ 1</td>
+                                <td>ФЧ 3</td>
+                                <td>География</td>
+                            </tr>
+                            <tr>
+                                <td>Час 6</td>
+                                <td>КМИТ 2</td>
+                                <td>Литература</td>
+                                <td>Математика</td>
+                                <td>ФЧ 2</td>
+                                <td>ЧП</td>
+                            </tr>
+                            <tr>
+                                <td>Час 7</td>
+                                <td>Английски</td>
+                                <td>КМИТ 1</td>
+                                <td>Час на класа</td>
+                                <td>История</td>
+                                <td>ТиП</td>
+                            </tr>
+                            <tr>
+                                <td>Час 8</td>
+                                <td>Математика</td>
+                                <td>Рисуване</td>
+                                <td>ФЧ 3</td>
+                                <td>География</td>
+                                <td>Български</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
         
